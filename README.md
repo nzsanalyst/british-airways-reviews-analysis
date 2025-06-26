@@ -24,6 +24,12 @@ This repo contains my end-to-end analytics project on British Airways customer r
 - **`04_standardize_columns.sql`**  
   Cleans and standardizes column names for consistency across analyses.
 
+- **`british_airways_reviews_ml.pptx`** / **`british_airways_reviews_ml.pdf`**  
+  Dedicated ML-focused deck (and PDF export) detailing:  
+  - Random Forest, XGBoost, Decision Tree model performance  
+  - Feature importance and confusion matrices  
+  - Model comparison and strategic recommendations
+
 - **Tableau Dashboard**  
   [View interactive dashboard on Tableau Public](https://public.tableau.com/app/profile/mahnoor.syed5125/viz/BritishAirwaysReviews_17126414116680/Dashboard1)
 
