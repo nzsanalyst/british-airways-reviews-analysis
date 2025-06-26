@@ -31,10 +31,14 @@ This repo contains my end-to-end analytics project on British Airways customer r
 
 ## 🎯 Project Summary
 
-- **Goal:** Uncover key drivers of passenger satisfaction and recommendation behavior for British Airways.  
+- **Goal:** Uncover key drivers of passenger satisfaction and predict recommendation behavior.  
 - **Data:** ~200K customer reviews from Kaggle (2012–2023).  
-- **Tools & Methods:** SQL for data parsing, time-series aggregation, and correlation analysis; Tableau for interactive visualization.  
-- **Key Insight:** Route-specific factors and service ratings (e.g., seat comfort, staff friendliness) strongly correlate with overall satisfaction and likelihood to recommend.
+- **Tools & Methods:**  
+  - **SQL:** Data parsing, time-series aggregation, correlation analysis.  
+  - **Dataiku:** Built Random Forest and XGBoost models—achieving a 0.98 ROC AUC—to predict recommendation likelihood.  
+  - **Tableau:** Interactive visualizations of satisfaction drivers by route and service metric.  
+- **Key Insight:** Cabin staff service, value for money, and seat comfort emerged as the top drivers of passenger recommendations.
+
 
 ---
 
