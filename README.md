@@ -15,5 +15,4 @@ This repository presents an end-to-end analytics project examining British Airwa
 - `02_time_series_analysis.sql` — Aggregates ratings & recommendation rates over time  
 - `03_service_correlation.sql` — Correlates service metrics with overall satisfaction  
 - `04_standardize_columns.sql` — Final rename of all columns for consistency  
-- `BritishAirways.twbx` — Tableau dashboard workbook  
 - **Dashboard Link**: [View the interactive dashboard on Tableau Public](https://public.tableau.com/app/profile/mahnoor.syed5125/viz/BritishAirwaysReviews_17126414116680/Dashboard1)
