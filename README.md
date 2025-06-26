@@ -1,28 +1,35 @@
 # British Airways Reviews Analysis
 
 ## Overview
-This repository presents an end-to-end analytics project that examines British Airways customer reviews from 2012 to 2023. It includes manual data preparation in CSV format, SQL-based exploratory analyses, and an interactive Tableau dashboard that visualizes key insights on passenger satisfaction across routes, seasons, and service dimensions.
+This repository presents an end-to-end analytics project examining British Airways customer reviews (2012–2023). It includes:
+- **Data Preparation**: Manual cleanup of raw CSV files.
+- **SQL Analyses**: Four key scripts to parse routes, analyze trends, correlate service aspects, and standardize column names.
+- **Tableau Dashboard**: Interactive workbook visualizing passenger satisfaction insights.
 
-## Tech Stack
-- **CSV**: Raw and cleaned data storage
-- **SQL (Snowflake-compatible)**: Analysis and aggregation scripts
-- **Tableau**: Interactive dashboard development
+## Contents
 
-## Repository Structure
-```bash
-├── data/                   # CSV files for original and cleaned review data
-│   ├── raw_reviews.csv     # Original exported review dataset
-│   └── cleaned_reviews.csv # Processed dataset ready for analysis
-│
-├── docs/                   # Supporting documentation or screenshots
-│   └── dataiku_recipes/    # (Optional) Screenshots or notes from Dataiku cleaning steps
-│
-├── sql/                    # SQL scripts for local or Snowflake use
-│   ├── 01_route_parsing.sql        # Split composite route strings into origin, destination, and stopovers
-│   ├── 02_time_series_analysis.sql # Aggregate ratings and recommendation rates over time
-│   └── 03_service_correlation.sql  # Correlate service metrics with overall satisfaction
-│
-├── tableau/                # Tableau workbook for the dashboard
-│   └── BritishAirways.twbx
-│
-└── README.md               # Project documentation (this file)
+- `raw_reviews.csv` — Original review dataset (Kaggle export)  
+- `cleaned_reviews.csv` — Manually cleaned file  
+- `01_route_parsing.sql` — Extracts origin, destination, and connections  
+- `02_time_series_analysis.sql` — Aggregates ratings & recommendation rates over time  
+- `03_service_correlation.sql` — Correlates service metrics with overall satisfaction  
+- `04_standardize_columns.sql` — Final rename of all columns for consistency  
+- `BritishAirways.twbx` — Tableau dashboard workbook  
+- **Dashboard Link**: [View the interactive dashboard on Tableau Public](https://public.tableau.com/app/profile/mahnoor.syed5125/viz/BritishAirwaysReviews_17126414116680/Dashboard1)
+
+## SQL Scripts
+
+### 01_route_parsing.sql
+```sql
+-- Purpose: Split composite route strings into granular columns
+SELECT
+  SPLIT_PART("route", ' to ', 1) AS "Origin",
+  CASE
+    WHEN POSITION(' via ' IN "route") > 0 THEN SPLIT_PART(SPLIT_PART("route", ' via ', 2), ' to ', 1)
+    ELSE SPLIT_PART("route", ' to ', 2)
+  END AS "Destination",
+  CASE
+    WHEN POSITION(' via ' IN "route") > 0 THEN SPLIT_PART("route", ' via ', 1)
+    ELSE NULL
+  END AS "Connections"
+FROM "YOUR_SCHEMA"."raw_reviews";
